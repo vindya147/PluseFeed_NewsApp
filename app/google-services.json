@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "575816042062",
+    "project_id": "plusefeed-newsapp",
+    "storage_bucket": "plusefeed-newsapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575816042062:android:54372e0ce1bc67bdab651f",
+        "android_client_info": {
+          "package_name": "com.example.newsapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD49dJLpzzx9AzzstuqVUGtkov4vCzbQPQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
