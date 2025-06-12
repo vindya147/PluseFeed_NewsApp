@@ -72,6 +72,16 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.fragment_container, new HomeFragment())
                     .commit();
         }
+        else if (id == R.id.bottom_edu) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new EducationFragment())
+                    .commit();
+        }
+        else if (id == bottom_event) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new EventFragment())
+                    .commit();
+        }
 
         // Only close drawer if it was a navigation drawer item
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
