@@ -2,154 +2,136 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@android:color/white"
-    android:gravity="center_horizontal">
+    android:gravity="center"
+    tools:context=".EditProfileFragment">
 
-    <!-- Top bar with PulseFeed badge -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="24dp"
-        android:paddingEnd="24dp">
+    <androidx.cardview.widget.CardView
+        android:layout_width="350dp"
+        android:layout_height="600dp"
+        android:layout_margin="30dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="600dp"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:padding="24dp"
+            android:background="@drawable/lavender_border">
+
+            <ImageView
+                android:id="@+id/profileImg"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="0dp"
+                android:src="@drawable/user_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/titleName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Name"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@id/profileImg"
+                app:layout_constraintStart_toStartOf="@id/profileImg"
+                app:layout_constraintTop_toBottomOf="@id/profileImg" />
+
+            <TextView
+                android:id="@+id/titleUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="username"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+
+                app:layout_constraintEnd_toEndOf="@id/titleName"
+                app:layout_constraintStart_toStartOf="@id/titleName"
+                app:layout_constraintTop_toBottomOf="@id/titleName" />
 
 
-    </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Edit Profile"
+                android:textSize="36sp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/lavender"/>
 
-    <!-- Title -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bio-Data"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:textColor="@android:color/black"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/editName"
+                android:background="@drawable/lavender_border"
+                android:layout_marginTop="10dp"
+                android:padding="8dp"
+                android:hint="Name"
+                android:drawableLeft="@drawable/baseline_person_24"
+                android:drawablePadding="8dp"
+                android:textColor="@color/black"/>
 
-    <!-- Profile Image -->
-    <ImageView
-        android:id="@+id/profileImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/profile_icon"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:scaleType="centerCrop"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/editEmail"
+                android:background="@drawable/lavender_border"
+                android:layout_marginTop="20dp"
+                android:padding="8dp"
+                android:hint="Email"
+                android:drawableLeft="@drawable/baseline_email_24"
+                android:drawablePadding="8dp"
+                android:textColor="@color/black"/>
 
-    <!-- Name -->
-    <TextView
-        android:id="@+id/profileName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Vindya Pramuditha Wttegedara"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:layout_marginTop="8dp"
-        android:textColor="@android:color/black"/>
 
-    <!-- Email -->
-    <TextView
-        android:id="@+id/profileEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="wattegedaravindya147@gmail.com"
-        android:textSize="14sp"
-        android:gravity="center"
-        android:textColor="#888888"
-        android:layout_marginBottom="16dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/editUserName"
+                android:background="@drawable/lavender_border"
+                android:layout_marginTop="20dp"
+                android:padding="8dp"
+                android:hint="Username"
+                android:drawableLeft="@drawable/baseline_person_24"
+                android:drawablePadding="8dp"
+                android:textColor="@color/black"/>
 
-    <!-- Index Number Label -->
-    <TextView
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="Index Number"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="4dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/editPassword"
+                android:background="@drawable/lavender_border"
+                android:layout_marginTop="20dp"
+                android:padding="8dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:drawableLeft="@drawable/baseline_lock_24"
+                android:drawablePadding="8dp"
+                android:textColor="@color/black"/>
 
-    <!-- Index Number Edit -->
-    <EditText
-        android:id="@+id/editIndexNumber"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:background="@drawable/lavender_border"
-        android:layout_marginTop="20dp"
-        android:hint="Update Index Number"
-        android:textSize="16sp"
-        android:padding="10dp"
-        android:layout_marginBottom="8dp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Save"
+                android:id="@+id/btnUpdateProfile"
+                android:textSize="18sp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="@color/lavender"
+                app:cornerRadius = "20dp"/>
 
-    <!-- Email Label -->
-    <TextView
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="Email"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="4dp"/>
+        </LinearLayout>
 
-    <!-- Email Edit -->
-    <EditText
-        android:id="@+id/editEmail"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:background="@drawable/lavender_border"
-        android:layout_marginTop="20dp"
-        android:hint="Update Email Address"
-        android:textSize="16sp"
-        android:padding="10dp"
-        android:layout_marginBottom="8dp"/>
-
-    <!-- User Name Label -->
-    <TextView
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="User Name"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="4dp"/>
-
-    <!-- User Name Edit -->
-    <EditText
-        android:id="@+id/editUserName"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:background="@drawable/lavender_border"
-        android:layout_marginTop="20dp"
-        android:hint="Update User Name"
-        android:textSize="16sp"
-        android:padding="10dp"
-        android:layout_marginBottom="16dp"/>
-
-    <!-- Update Profile Button -->
-    <Button
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:text="Update Profile"
-        android:id="@+id/btnUpdateProfile"
-        android:textSize="18sp"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="@color/lavender"
-        app:cornerRadius = "20dp"/>
-
-    <!-- Release Version -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Release Version: 2.3.5"
-        android:textSize="14sp"
-        android:gravity="center"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:textColor="@android:color/black"/>
-
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
