@@ -12,22 +12,27 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class EditProfileFragment extends Fragment {
 
     private EditText editName, editEmail, editUserName, editPassword;
     private Button btnUpdateProfile;
-    private String nameUser, emailUser, usernameUser, passwordUser;
     private DatabaseReference reference;
+
+    // Assume you have the current logged-in username stored somewhere (e.g., SharedPreferences)
+    private String currentUsername = "Prabashi"; // Replace with actual username retrieval logic
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_edit_profile, container, false);
 
-        // Initialize Firebase reference
+        // Initialize Firebase reference to "users" node
         reference = FirebaseDatabase.getInstance().getReference("users");
 
         // Initialize UI elements
@@ -37,65 +42,54 @@ public class EditProfileFragment extends Fragment {
         editPassword = view.findViewById(R.id.editPassword);
         btnUpdateProfile = view.findViewById(R.id.btnUpdateProfile);
 
-        // Display user data
-        showData();
+        // Disable editing username if it's unique and shouldn't change
+        editUserName.setEnabled(true);
 
-        // Handle profile update button click
-        btnUpdateProfile.setOnClickListener(v -> {
-            if (isNameChanged() || isPasswordChanged() || isEmailChanged()) {
-                Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(requireContext(), "No Changes Found", Toast.LENGTH_SHORT).show();
-            }
-        });
+        // Fetch user data from Firebase and display
+        fetchUserData();
+
+        // Set update button click listener
+        btnUpdateProfile.setOnClickListener(v -> updateUserData());
 
         return view;
     }
 
-    private boolean isNameChanged() {
+    private void fetchUserData() {
+        reference.child(currentUsername).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    String name = snapshot.child("name").getValue(String.class);
+                    String email = snapshot.child("email").getValue(String.class);
+                    String username = snapshot.child("username").getValue(String.class);
+                    String password = snapshot.child("password").getValue(String.class);
+
+                    editName.setText(name);
+                    editEmail.setText(email);
+                    editUserName.setText(username);
+                    editPassword.setText(password);
+                } else {
+                    Toast.makeText(requireContext(), "User data not found", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(requireContext(), "Failed to load user data", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void updateUserData() {
         String newName = editName.getText().toString();
-        if (!nameUser.equals(newName)) {
-            reference.child(usernameUser).child("name").setValue(newName);
-            nameUser = newName;
-            return true;
-        }
-        return false;
-    }
-
-    private boolean isEmailChanged() {
         String newEmail = editEmail.getText().toString();
-        if (!emailUser.equals(newEmail)) {
-            reference.child(usernameUser).child("email").setValue(newEmail);
-            emailUser = newEmail;
-            return true;
-        }
-        return false;
-    }
-
-    private boolean isPasswordChanged() {
         String newPassword = editPassword.getText().toString();
-        if (!passwordUser.equals(newPassword)) {
-            reference.child(usernameUser).child("password").setValue(newPassword);
-            passwordUser = newPassword;
-            return true;
-        }
-        return false;
-    }
 
-    private void showData() {
-        if (getArguments() != null) {
-            nameUser = getArguments().getString("name");
-            emailUser = getArguments().getString("email");
-            usernameUser = getArguments().getString("username");
-            passwordUser = getArguments().getString("password");
+        // Update Firebase with new values
+        reference.child(currentUsername).child("name").setValue(newName);
+        reference.child(currentUsername).child("email").setValue(newEmail);
+        reference.child(currentUsername).child("password").setValue(newPassword);
 
-            editName.setText(nameUser);
-            editEmail.setText(emailUser);
-            editUserName.setText(usernameUser);
-            editPassword.setText(passwordUser);
-
-            // Make username field non-editable since it's unique
-            editUserName.setEnabled(false);
-        }
+        Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_SHORT).show();
     }
 }

@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 public class UserProfileFragment extends Fragment {
     private TextView profileName, profileEmail, profileUsername, profilePassword;
     private TextView titleName, titleUsername;
-    //private Button editProfile;
+
 
     @Nullable
     @Override
@@ -36,13 +36,10 @@ public class UserProfileFragment extends Fragment {
         profilePassword = view.findViewById(R.id.profilePassword);
         titleName = view.findViewById(R.id.titleName);
         titleUsername = view.findViewById(R.id.titleUsername);
-        //editProfile = view.findViewById(R.id.editButton);
 
-        // Display user data
+
         showAllUserData();
 
-        // Handle Edit Profile button click
-        //editProfile.setOnClickListener(v -> passUserData());
 
         return view;
     }
