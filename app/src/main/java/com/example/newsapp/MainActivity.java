@@ -67,6 +67,11 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.fragment_container, new LogoutFragment())
                     .commit();
         }
+        else if (id == nav_settings) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new SettingFragment())
+                    .commit();
+        }
         else if (id == R.id.bottom_game) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, new HomeFragment())

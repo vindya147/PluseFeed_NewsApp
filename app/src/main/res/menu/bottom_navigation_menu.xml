@@ -3,17 +3,17 @@
     <item
         android:id ="@+id/bottom_game"
         android:title="Game"
-        android:icon="@drawable/game"/>
+        android:icon="@drawable/ic_sports"/>
 
     <item
         android:id ="@+id/bottom_edu"
         android:title="Education"
-        android:icon="@drawable/edu"/>
+        android:icon="@drawable/ic_faculty"/>
 
 
     <item
         android:id ="@+id/bottom_event"
         android:title="Event"
-        android:icon="@drawable/event"/>
+        android:icon="@drawable/ic_events"/>
 
 </menu>

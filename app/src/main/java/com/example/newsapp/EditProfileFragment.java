@@ -25,7 +25,7 @@ public class EditProfileFragment extends Fragment {
     private DatabaseReference reference;
 
     // Assume you have the current logged-in username stored somewhere (e.g., SharedPreferences)
-    private String currentUsername = "Prabashi"; // Replace with actual username retrieval logic
+    private String currentUsername = "vindya147"; // Replace with actual username retrieval logic
 
     @Nullable
     @Override

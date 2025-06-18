@@ -10,5 +10,6 @@
     <color name="purple_700">#F6CEFC</color>
     <color name="teal_700">#FF018786</color>
     <color name="light_purple">#CBC3E3</color>
+    <color name="error_red">#EF4444</color>
 
 </resources>
